@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>测试2</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 20px;
+      }
+      button {
+        padding: 8px 16px;
+        font-size: 14px;
+        cursor: pointer;
+        margin-bottom: 15px;
+      }
+      .result {
+        margin: 15px 0;
+        font-size: 20px;
+        color: #333;
+      }
+      .history {
+        margin-top: 20px;
+        font-size: 16px;
+        color: #555;
+      }
+      .history-item {
+        margin: 3px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .red-balls {
+        color: red;
+        font-weight: bold;
+        margin-right: 10px;
+      }
+      .blue-balls {
+        color: blue;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>测试2</h1>
+    <button id="generateButton">生成号码</button>
+    <div class="result" id="result"></div>
+
+    <div class="history" id="history">
+      <h2>历史记录</h2>
+      <div id="historyList"></div>
+    </div>
+
+    <script>
+      const historyList = [];
+
+      function generateDltNumbers() {
+        const redBalls = [];
+        const blueBalls = [];
+
+        // 生成红球
+        while (redBalls.length < 5) {
+          const num = Math.floor(Math.random() * 35) + 1; // 生成 1 到 35 的随机数
+          if (!redBalls.includes(num)) {
+            redBalls.push(num);
+          }
+        }
+
+        // 生成蓝球
+        while (blueBalls.length < 2) {
+          const num = Math.floor(Math.random() * 12) + 1; // 生成 1 到 12 的随机数
+          if (!blueBalls.includes(num)) {
+            blueBalls.push(num);
+          }
+        }
+
+        // 排序
+        redBalls.sort((a, b) => a - b);
+        blueBalls.sort((a, b) => a - b);
+
+        return {
+          red: redBalls,
+          blue: blueBalls,
+        };
+      }
+
+      function updateHistory(red, blue) {
+        const historyEntry = `
+                <div class="history-item">
+                    <span class="re d-balls">红球: ${red.join(", ")}</span>
+                    <span class="blue-balls">蓝球: ${blue.join(", ")}</span>
+                </div>
+            `;
+        historyList.push(historyEntry);
+        document.getElementById("historyList").innerHTML = historyList.join("");
+      }
+
+      document
+        .getElementById("generateButton")
+        .addEventListener("click", function () {
+          const dltNumbers = generateDltNumbers();
+          document.getElementById(
+            "result"
+          ).innerText = `红球: ${dltNumbers.red.join(
+            ", "
+          )} | 蓝球: ${dltNumbers.blue.join(", ")}`;
+          updateHistory(dltNumbers.red, dltNumbers.blue);
+        });
+    </script>
+  </body>
+</html>

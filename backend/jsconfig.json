@@ -1,0 +1,6 @@
+{
+  "include": ["**/*"],
+  "typeAcquisition": {
+    "include": ["node"]
+  }
+}
