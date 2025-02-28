@@ -11,7 +11,7 @@ Sub DeepV3()
   Dim resoningContent As String
   Dim finalContent As String
   
-  api_key = "sk-e7e2e30d72fd4aa1b63c5dd2eb806a5d"
+  api_key = "sk-e7e2e30d72fd406a5d"
   If api_key = "" Then
      MsgBox "enter API Key"
      Exit Sub
