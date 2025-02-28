@@ -1,9 +1,8 @@
 /**
  * @param {Egg.Application} app - egg application
  */
-module.exports = (app) => {
+module.exports = app => {
   const { router, controller } = app;
-  router.get("/", controller.home.index);
+  // 用户管理相关路由 
 
-  require("./router/user.js")(app);
 };

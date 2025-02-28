@@ -1,18 +1,16 @@
 module.exports = {
-  Success(msg, data, code = 200) {
-    this.status = code; // 明确设置 HTTP 状态码
+  Success(message, data) {
     this.body = {
-      code,
-      msg,
-      data,
+      code: 200,
+      message,
+      data
     };
   },
-  Error(msg = "error", data = null, code = 400) {
-    this.status = code; // 明确设置 HTTP 状态码
+  Fail(message, error) {
     this.body = {
-      code,
-      msg,
-      data,
-    };
+      code: 500,
+      message,
+      error
+    }
   },
 };

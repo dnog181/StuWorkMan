@@ -1,19 +1,12 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
-  {
-    path: "/",
-    redirect: "home",
-  },
-  {
-    path: "/home",
-    component: () => import("../views/Home.vue"),
-  },
+
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
-  routes,
+  history: createWebHistory(),
+  routes
 });
 
 export default router;
